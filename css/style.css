@@ -9,6 +9,9 @@ body {
   text-align: center;
   font-family: 'PT Sans Caption', sans-serif;
   color: red;
+  font-weight: bold;
+  font-size: 15px
+
 }
 
 .wrapper {
