@@ -78,3 +78,12 @@ hr {
   margin: 20px;
   text-align: center;
 }
+
+.posts{
+  margin: auto;
+  width: 90%;
+}
+.one-post {
+  border: 2px solid red;
+  margin: 10px
+}
