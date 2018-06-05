@@ -10,7 +10,7 @@ body {
   background-size: 100%;
   text-align: center;
   font-family: 'Aa-font', sans-serif;
-  color: red;
+  color: #777;
   font-weight: bold;
   font-size: 15px
 }
@@ -38,11 +38,15 @@ body {
   background: none;
 }
 
-.note-head {
+.note-head, .note-footer {
   padding: 0;
   margin: 0;
   width: 60%;
   margin-top: 25px;
+}
+
+.note-footer {
+  margin: 0;
 }
 
 .navbar-nav {
@@ -98,9 +102,14 @@ hr {
 }
 
 .one-post:hover {
-  color: black;
+  color: #333;
 }
 
 h2 {
   padding: 15px;
+}
+
+.copyright {
+  padding-top: 10px;
+  margin:0; 
 }
