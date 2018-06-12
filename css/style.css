@@ -1,16 +1,11 @@
-@font-face {
-  font-family: 'Aa-font';
-  src: url('../fonts/Aa.ttf');
-}
-
 body {
   background: url("../image/background.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100%;
   text-align: center;
-  font-family: 'Aa-font', sans-serif;
-  color: #777;
+  font-family: 'Georgia', sans-serif;
+  color: red;
   font-weight: bold;
   font-size: 15px
 }
@@ -38,7 +33,17 @@ body {
   background: none;
 }
 
-.note-head, .note-footer {
+a {
+  color: red;
+}
+
+a:hover {
+  text-decoration: none;
+  color: red;
+}
+
+.note-head,
+.note-footer {
   padding: 0;
   margin: 0;
   width: 60%;
@@ -47,6 +52,7 @@ body {
 
 .note-footer {
   margin: 0;
+  margin-bottom: 10px;
 }
 
 .navbar-nav {
@@ -59,17 +65,18 @@ body {
   font-size: 15px;
 }
 
-.container-fluid, .navbar-collapse {
+.container-fluid,
+.navbar-collapse {
   padding: 0;
 }
 
-.nav>li>.a{
+.nav>li>.a {
   padding: 2px !important;
 }
 
 .navbar-nav>.active>a {
   text-decoration: none;
-  color: #777 !important;
+  color: red !important;
   background: none !important;
 }
 
@@ -77,11 +84,11 @@ a:visited {
   color: inherit;
 }
 
-.navbar-brand:hover{
-    color:#777 !important;
+.navbar-brand:hover {
+  color: red !important;
 }
 
-.navbar-nav>.active>a:hover{
+.navbar-nav>.active>a:hover {
   color: black !important;
 }
 
@@ -98,11 +105,45 @@ hr {
 
 .one-post {
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid rgba(119, 119, 119, 0.5);
+  background-color: rgba(119, 119, 119, 0.2);
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.level {
+  font-size: 10px;
+  padding: 5px;
+  border: 1px solid #777;
+  background-color: rgba(119, 119, 119, 0.5);
+  width: fit-content;
+  border-radius: 2px;
+}
+
+.level p {
+  margin: 0px;
+}
+
+.training {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.training .img-thumbnail {
+  margin: 10px 10px 10px 0px;
+  background-color: rgba(119, 119, 119, 0.5);
+  border-color: rgba(119, 119, 119, 0.5);
+}
+
+.training .img-thumbnail:hover {
+  border-color: rgba(119, 119, 119, 0.5);
 }
 
 .one-post:hover {
-  color: #333;
+  color: red;
+  background-color: rgba(119, 119, 119, 0.5);
 }
 
 h2 {
@@ -111,5 +152,82 @@ h2 {
 
 .copyright {
   padding-top: 10px;
-  margin:0; 
+  margin: 0;
+}
+
+.img-thumbnail:hover {
+  border-color: red;
+}
+
+.preview-text {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.add-game {
+  font-size: 72px;
+  margin: auto;
+  color: #777;
+}
+
+.add-game:hover {
+  text-decoration: none;
+}
+
+.button-game {
+  border: 5px solid red;
+  font-size: 71px;
+  width: 100px;
+  height: 100px;
+}
+
+.row:hover .ready {
+  display: inline;
+  color: red;
+}
+
+.row:hover .add-game {
+  color: red;
+}
+
+.ready {
+  display: none;
+}
+
+.row {
+  padding: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+@media (max-width: 999px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .note-body {
+    background-image: url("../image/note-body.png");
+    width: 90%;
+  }
+  .note-head,
+  .note-footer {
+    width: 90%;
+  }
+}
+
+.type-game {
+  text-align: left;
+  margin: 10px;
+}
+
+li {
+  list-style: none;
 }

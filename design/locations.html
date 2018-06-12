@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta />
+  <title>Заголовок</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+  <img src="image/note-head.png" class="note-head" />
+  <div class="wrapper">
+    <div class="note-body">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">We Are Here</a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active">
+                <a href="#">Главная</a>
+              </li>
+              <li>
+                <a href="#">Игры</a>
+              </li>
+              <li>
+                <a href="#">Развитие</a>
+              </li>
+              <li>
+                <a href="#">Площадки</a>
+              </li>
+              <li>
+                <a href="#">Разное</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class='posts'>
+        <hr width='90%' size='1'>
+        <div class='row'>
+          <div class='col-md-2'>
+            <div class='button-game'>
+              <p class='ready'>
+                &#10003;
+              </p>
+            </div>
+          </div>
+          <div class='col-md-10'>
+            <a class='add-game' href='#'> Я здесь! </a>
+          </div>
+        </div>
+        <hr width='90%' size='1'>
+        <h2>Площадки города</h2>
+        <hr width='90%' size='1'>
+        <div class='one-post'>
+          <div id="map"></div>
+        </div>
+        <hr width='90%' size='1'>
+      </div>
+      <div class="footer">
+          <p class="copyright"> (С) «We are Here», 2018</p>
+      </div>
+    </div>
+
+  </div>
+  <img src="image/note-footer.png" class="note-footer" />
+
+  <script src="js/map.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByrG3OXiHpE5Cj0ZgfCRFEWWWVTsorNM&callback=initMap">
+    </script>
+</body>
+
+</html>
