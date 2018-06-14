@@ -22,7 +22,8 @@
    
   // выполняем операции с базой данных
   $query ="SELECT * FROM games
-      LEFT JOIN type_of_games ON type_of_games.id = games.id_type_of_game";
+      LEFT JOIN type_of_games ON type_of_games.id = games.id_type_of_game
+      LEFT JOIN locations ON locations.id = games.name";
   $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
   if($result)
   {
@@ -32,7 +33,7 @@
     {
         $row = mysqli_fetch_row($result);?>
           <div class='one-post'>
-            <h4><?php echo $row[1]?></h4>
+            <h4><?php echo $row[9]?></h4>
             <p><?php echo $row[7]?></p>
             <p>Количество человек: <?php echo $row[3]?></p>
             <p>Время начала: <?php echo $row[4]?></p>
@@ -77,6 +78,7 @@
 
           <input type='number' name='count' placeholder='Кол-во человек:' required>
 
+        <!--  <div class="g-recaptcha" data-sitekey="6LdH1F4UAAAAAB3WtIsLSyJrW9nSHbTkxb381eZv"></div> -->
         </div>
         <!-- Футер модального окна -->
         <div class="modal-footer">
