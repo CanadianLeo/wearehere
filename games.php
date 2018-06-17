@@ -63,12 +63,12 @@
 
           <input type='text' name='creater' placeholder='Ваше имя:' required><br />
 
-          <select class='type-game' name="type_of_game[]" required>
+          <select class='type-game' name="type_of_game" required>
             <option disabled selected >Игра:</option>
-            <option value="footbol">Футбол</option>
-            <option value="basketbol">Баксетбол</option>
-            <option value="hockey">Хоккей</option>
-            <option value="volleybol">Волейбол</option>
+            <option value="Футбол">Футбол</option>
+            <option value="Баскетбол">Баксетбол</option>
+            <option value="Хоккей">Хоккей</option>
+            <option value="Волейбол">Волейбол</option>
           </select><br />
 
           <input type='text' name="location" id="input-search" placeholder='Площадка:' required>
@@ -83,7 +83,7 @@
         <!-- Футер модального окна -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-          <button type="submit" class="btn btn-primary">Добавить</button>
+          <input type="submit" class="btn btn-primary" value="Добавить" />
         </div>
       </div>
     </form>
@@ -94,8 +94,7 @@
 <script type="text/javascript" src="js/TextChange.js"></script>
  
 <?php 
-if (isset($_POST['submit'])){
-  if (isset($_POST['type_of_game[]'])){
+  if (isset($_POST['location']) && isset($_POST['creater']) && isset($_POST['count']) && isset($_POST['type_of_game'])){
     $err = array();
 
     // подключаемся к серверу
@@ -104,7 +103,7 @@ if (isset($_POST['submit'])){
   
     $location = mysqli_real_escape_string($link, $_POST['location']);
     
-    $query = 'SELECT * FROM locations WHERE name=%$location%';
+    $query = "SELECT * FROM locations WHERE name='$location'";
     $place;
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
     if($result)
@@ -118,8 +117,9 @@ if (isset($_POST['submit'])){
       }
     }
 
-    $type = mysqli_real_escape_string($link, $_POST['type_of_game[]']);
-    $query = 'SELECT * FROM type_of_games WHERE name=%$type%';
+    $type = mysqli_real_escape_string($link, $_POST['type_of_game']);
+    $query = "SELECT * FROM type_of_games WHERE name='$type'";
+    
     $type0;
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
     if($result)
@@ -128,11 +128,14 @@ if (isset($_POST['submit'])){
       $type0 = $row[0];
     }
     $count = mysqli_real_escape_string($link, $_POST['count']);
-    $name = mysqli_real_escape_string($link, $_POST['name']);
+    $name = mysqli_real_escape_string($link, $_POST['creater']);
+    $timeS = date( 'H:i' );
 
     if (count($err) == 0) {
-      $query = "INSERT INTO `games` (`id`, `name`, `id_type_of_game`, `countOfPeople`, `timeToStart`, `creater`) VALUES (NULL, '$place', '$type0', '$count', date( 'H:i' ), '$name')";
+      $query = "INSERT INTO `games` (`id`, `name`, `id_type_of_game`, `countOfPeople`, `timeToStart`, `creater`) VALUES (NULL, '$place', '$type0', '$count', '$timeS' , '$name')";
+      $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
     }
+  } else {
+
   }
-}
 ?>
