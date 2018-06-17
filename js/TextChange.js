@@ -4,13 +4,13 @@
     $('#input-search').bind('input', function () {
       // В переменную помещаем поисковое значение которое ввел пользователь.               
       var input_search = $("#input-search").val();
-      // Проверяем поисковое значение. Если оно больше или ровняется Трём, то всё нормально и также если меньше 150 символов.
-      if (input_search.length >= 3 && input_search.length < 150) {
+      // Проверяем поисковое значение. 
+            if (input_search.length >= 3 && input_search.length < 150) {
         // Делаем запрос в обработчик в котором будет происходить поиск.
         $.ajax({
           type: "POST",
           url: "/wearehere/controller/search.php", // Обработчик.
-          data: "q=" + input_search, // В переменной <strong>q</strong> отправляем ключевое слово в обработчик.
+          data: "q=" + input_search, 
           dataType: "html",
           cache: false,
           success: function (data) {
