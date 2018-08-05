@@ -14,38 +14,36 @@
           </a>
         </div>
 <?php
-  require_once 'controller/controller.php'; // подключаем скрипт
- 
-  // подключаемся к серверу
-  $link = mysqli_connect($host, $user, $password, $database) 
-      or die("Ошибка " . mysqli_error($link));
-   
-  // выполняем операции с базой данных
-  $query ="SELECT * FROM games
+require_once 'controller/controller.php'; // подключаем скрипт
+
+// подключаемся к серверу
+$link = mysqli_connect($host, $user, $password, $database)
+or die("Ошибка " . mysqli_error($link));
+
+// выполняем операции с базой данных
+$query = "SELECT * FROM games
       LEFT JOIN type_of_games ON type_of_games.id = games.id_type_of_game
       LEFT JOIN locations ON locations.id = games.name";
-  $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-  if($result)
-  {
+$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+if ($result) {
     echo '<div class="grid">';
     $rows = mysqli_num_rows($result); // количество полученных строк
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
+    for ($i = 0; $i < $rows; ++$i) {
         $row = mysqli_fetch_row($result);?>
           <div class='one-post'>
-            <h4><?php echo $row[9]?></h4>
-            <p><?php echo $row[7]?></p>
-            <p>Количество человек: <?php echo $row[3]?></p>
-            <p>Время начала: <?php echo $row[4]?></p>
-            <p>Создатель лобби: <?php echo $row[5]?></p>
+            <h4><?php echo $row[9] ?></h4>
+            <p><?php echo $row[7] ?></p>
+            <p>Количество человек: <?php echo $row[3] ?></p>
+            <p>Время начала: <?php echo $row[4] ?></p>
+            <p>Создатель лобби: <?php echo $row[5] ?></p>
           </div>
         <?php
-    }
+}
     echo '</div>';
-     
+
     // очищаем результат
     mysqli_free_result($result);
-  }
+}
 ?>
 <?php require_once 'footer.php';?>
 
@@ -92,50 +90,48 @@
 
 <script type="text/javascript" src="js/textAdd.js"></script>
 <script type="text/javascript" src="js/TextChange.js"></script>
- 
-<?php 
-  if (isset($_POST['location']) && isset($_POST['creater']) && isset($_POST['count']) && isset($_POST['type_of_game'])){
+
+<?php
+if (isset($_POST['location']) && isset($_POST['creater']) && isset($_POST['count']) && isset($_POST['type_of_game'])) {
     $err = array();
 
     // подключаемся к серверу
-    $link = mysqli_connect($host, $user, $password, $database) 
+    $link = mysqli_connect($host, $user, $password, $database)
     or die("Ошибка " . mysqli_error($link));
-  
+
     $location = mysqli_real_escape_string($link, $_POST['location']);
-    
+
     $query = "SELECT * FROM locations WHERE name='$location'";
     $place;
-    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-    if($result)
-    {
-      $rows = mysqli_num_rows($result);
-      if ($rows != 1) {
-        $err[] = 'Нет такой площадки';
-      } else {
-        $row = mysqli_fetch_row($result);
-        $place = $row[0];
-      }
+    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+    if ($result) {
+        $rows = mysqli_num_rows($result);
+        if ($rows != 1) {
+            $err[] = 'Нет такой площадки';
+        } else {
+            $row = mysqli_fetch_row($result);
+            $place = $row[0];
+        }
     }
 
     $type = mysqli_real_escape_string($link, $_POST['type_of_game']);
     $query = "SELECT * FROM type_of_games WHERE name='$type'";
-    
+
     $type0;
-    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-    if($result)
-    {
-      $row = mysqli_fetch_row($result);
-      $type0 = $row[0];
+    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+    if ($result) {
+        $row = mysqli_fetch_row($result);
+        $type0 = $row[0];
     }
     $count = mysqli_real_escape_string($link, $_POST['count']);
     $name = mysqli_real_escape_string($link, $_POST['creater']);
-    $timeS = date( 'H:i' );
+    $timeS = date('H:i');
 
     if (count($err) == 0) {
-      $query = "INSERT INTO `games` (`id`, `name`, `id_type_of_game`, `countOfPeople`, `timeToStart`, `creater`) VALUES (NULL, '$place', '$type0', '$count', '$timeS' , '$name')";
-      $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+        $query = "INSERT INTO `games` (`id`, `name`, `id_type_of_game`, `countOfPeople`, `timeToStart`, `creater`) VALUES (NULL, '$place', '$type0', '$count', '$timeS' , '$name')";
+        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
     }
-  } else {
+} else {
 
-  }
+}
 ?>

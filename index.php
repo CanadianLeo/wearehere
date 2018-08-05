@@ -17,36 +17,34 @@
         <h2>Главные новости</h2>
         <hr width='90%' size='1'>
 <?php
-  require_once 'controller/controller.php'; // подключаем скрипт
- 
-  // подключаемся к серверу
-  $link = mysqli_connect($host, $user, $password, $database) 
-      or die("Ошибка " . mysqli_error($link));
-   
-  // выполняем операции с базой данных
-  $query ="SELECT * FROM news";
-  $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-  if($result)
-  {
+require_once 'controller/controller.php'; // подключаем скрипт
+
+// подключаемся к серверу
+$link = mysqli_connect($host, $user, $password, $database)
+or die("Ошибка " . mysqli_error($link));
+
+// выполняем операции с базой данных
+$query = "SELECT * FROM news";
+$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+if ($result) {
     $rows = mysqli_num_rows($result); // количество полученных строк
-     
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
+
+    for ($i = 0; $i < $rows; ++$i) {
         $row = mysqli_fetch_row($result);?>
         <div class='one-post'>
-          <img class='img-thumbnail' src='<?php echo $row[2]?>' alt=''>
-          <p class='preview-text'><?php echo $row[1]?></p>
+          <img class='img-thumbnail' src='<?php echo $row[2] ?>' alt=''>
+          <p class='preview-text'><?php echo $row[1] ?></p>
           <hr width='90%' size='1'>
         </div>
         <?php
-    }
-     
+}
+
     // очищаем результат
     mysqli_free_result($result);
-  }
-   
-  // закрываем подключение
-  mysqli_close($link);
+}
+
+// закрываем подключение
+mysqli_close($link);
 ?>
 <?php require_once 'footer.php';?>
 

@@ -32,16 +32,28 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <?php $menu = array_reverse(explode('/', $_SERVER["REQUEST_URI"]))[0];?>
-              <li<?php if($menu == 'games.php') echo ' class="active"'?>>
+              <li<?php if ($menu == 'games.php') {
+    echo ' class="active"';
+}
+?>>
                 <a href="games.php">Игры</a>
               </li>
-              <li<?php if($menu == 'training.php') echo ' class="active"'?>>
+              <li<?php if ($menu == 'training.php') {
+    echo ' class="active"';
+}
+?>>
                 <a href="training.php">Развитие</a>
               </li>
-              <li<?php if($menu == 'locations.php') echo ' class="active"'?>>
+              <li<?php if ($menu == 'locations.php') {
+    echo ' class="active"';
+}
+?>>
                 <a href="locations.php">Площадки</a>
               </li>
-              <li<?php if($menu == 'about.php') echo ' class="active"'?>>
+              <li<?php if ($menu == 'about.php') {
+    echo ' class="active"';
+}
+?>>
                 <a href="about.php">О нас</a>
               </li>
             </ul>

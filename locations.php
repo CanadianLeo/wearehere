@@ -26,41 +26,39 @@ var markerCluster = new MarkerClusterer(map, markers,
 
 
 var locations = [
-<?php 
-  $labels = array();
-  require_once 'controller/controller.php';
-  // подключаемся к серверу
-  $link = mysqli_connect($host, $user, $password, $database) 
-      or die("Ошибка " . mysqli_error($link));
-   
-  // выполняем операции с базой данных
-  $query ="SELECT * FROM locations";
+<?php
+$labels = array();
+require_once 'controller/controller.php';
+// подключаемся к серверу
+$link = mysqli_connect($host, $user, $password, $database)
+or die("Ошибка " . mysqli_error($link));
 
-  $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-  if($result)
-  {
+// выполняем операции с базой данных
+$query = "SELECT * FROM locations";
+
+$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+if ($result) {
     $rows = mysqli_num_rows($result); // количество полученных строк
-    for ($i = 0 ; $i < $rows ; ++$i)
-    {
-      $row = mysqli_fetch_row($result);
-      echo "{lat:" . $row[2] . ", lng: " . $row[3] . "}";
-      $labels[] = $row[1];
-      if ($i != $rows-1) {
-        echo ",";
-      }
+    for ($i = 0; $i < $rows; ++$i) {
+        $row = mysqli_fetch_row($result);
+        echo "{lat:" . $row[2] . ", lng: " . $row[3] . "}";
+        $labels[] = $row[1];
+        if ($i != $rows - 1) {
+            echo ",";
+        }
     }
-  echo "];";
-  }
-  ?>
+    echo "];";
+}
+?>
   var labels = [
   <?php
-  for ($i = 0; $i < count($labels); ++$i){
-    echo "'".$labels[$i]."'";
-    if ($i != count($labels)-1){
-      echo ",";
+for ($i = 0; $i < count($labels); ++$i) {
+    echo "'" . $labels[$i] . "'";
+    if ($i != count($labels) - 1) {
+        echo ",";
     }
-  }
-  ?>
+}
+?>
 ];
 </script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
